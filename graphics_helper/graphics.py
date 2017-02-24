@@ -39,6 +39,7 @@ def detect_face(image_path):
 
 
 def transform_image(file_name, width, height, ext, save_dir, face=True, encoded=True):
+
     img = Image.open(file_name)
 
     if face:
