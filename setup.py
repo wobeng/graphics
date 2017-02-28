@@ -50,8 +50,7 @@ setup(
     author='Welby Obeng',
     license=_lu_meta['license'],
     keywords='graphics helper',
-    packages=find_packages(),
-    package_data={'': ['frontalface.xml']},
+    packages=['graphics_helper'],
     version=_lu_meta['version'],
     cmdclass={'install': MyInstall},
 )
