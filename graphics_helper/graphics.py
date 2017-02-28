@@ -7,7 +7,6 @@ from PIL import Image
 
 import cv2
 
-
 def detect_face(image_path):
     # Get user supplied values
     casc_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "frontalface.xml"))
