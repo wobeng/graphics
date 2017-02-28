@@ -66,7 +66,7 @@ def transform_image(file_name, width, height, ext, save_dir, face=True, encoded=
     if encoded:
         image_buffer = cStringIO.StringIO()
         img.save(image_buffer, format=image_format)
-        return base64.b64encode(image_buffer.getvalue())
+        return image_buffer.getvalue()
 
     output_file = os.path.join(save_dir, str(uuid.uuid4()) + "." + ext)
     img.save(output_file, format=image_format)
