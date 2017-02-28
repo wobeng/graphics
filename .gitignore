@@ -88,5 +88,7 @@ ENV/
 # Rope project settings
 .ropeproject
 
-!graphics_helper/cv2
-!graphics_helper/numpy
+
+!graphics_helper/cv2/*
+!graphics_helper/numpy/*
+.idea/workspace.xml
