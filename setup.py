@@ -1,6 +1,12 @@
 import ast
+import sys
+from subprocess import call
+
+import os
 import re
 from setuptools import setup, find_packages
+from setuptools.command.install import install
+
 
 def package_meta():
     """Read __init__.py for global package metadata.
@@ -24,7 +30,18 @@ def package_meta():
         'url': url,
     }
 
+
 _lu_meta = package_meta()
+
+
+class MyInstall(install):
+    def run(self):
+        install.run(self)
+        requirements_file = os.path.join(os.getcwd(), "requirements.txt")
+        if os.path.isfile(requirements_file):
+            cmd = [sys.executable.replace("python", "pip"), "install", "-r", requirements_file]
+            call(cmd)
+
 
 setup(
     name='graphics-helper',
@@ -36,4 +53,5 @@ setup(
     packages=find_packages(),
     package_data={'': ['frontalface.xml']},
     version=_lu_meta['version'],
+    cmdclass={'install': MyInstall},
 )
