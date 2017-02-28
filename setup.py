@@ -51,7 +51,6 @@ setup(
     license=_lu_meta['license'],
     keywords='graphics helper',
     packages=find_packages(),
-    package_data={'graphics_helper': ['*']},
     version=_lu_meta['version'],
     cmdclass={'install': MyInstall},
 )
