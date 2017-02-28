@@ -11,7 +11,6 @@ import cv2
 def detect_face(image_path):
     # Get user supplied values
     casc_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "frontalface.xml"))
-    print(casc_path)
 
     # Create the haar cascade
     face_cascade = cv2.CascadeClassifier(casc_path)
