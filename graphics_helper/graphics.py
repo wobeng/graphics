@@ -1,11 +1,10 @@
-import base64
-import cStringIO
 import uuid
 
+from io import StringIO
+import cv2
 import os
 from PIL import Image
 
-import cv2
 
 def detect_face(image_path):
     # Get user supplied values
@@ -38,7 +37,6 @@ def detect_face(image_path):
 
 
 def transform_image(file_name, width, height, ext, save_dir, face=True, encoded=True):
-
     img = Image.open(file_name)
 
     if face:
@@ -64,7 +62,7 @@ def transform_image(file_name, width, height, ext, save_dir, face=True, encoded=
     image_format = image_format.capitalize()
 
     if encoded:
-        image_buffer = cStringIO.StringIO()
+        image_buffer = StringIO()
         img.save(image_buffer, format=image_format)
         return image_buffer.getvalue()
 
