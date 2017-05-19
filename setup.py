@@ -54,4 +54,8 @@ setup(
     include_package_data=True,
     version=_lu_meta['version'],
     cmdclass={'install': MyInstall},
+    install_requires=[
+        'opencv-python',
+        'Pillow'
+    ]
 )
