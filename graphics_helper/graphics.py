@@ -1,6 +1,5 @@
 import uuid
 
-from io import StringIO
 import cv2
 import os
 from PIL import Image
@@ -36,7 +35,7 @@ def detect_face(image_path):
     return None
 
 
-def transform_image(file_name, width, height, ext, save_dir, face=True, encoded=True):
+def transform_image(file_name, width, height, ext, save_dir, face=True):
     img = Image.open(file_name)
 
     if face:
@@ -60,11 +59,6 @@ def transform_image(file_name, width, height, ext, save_dir, face=True, encoded=
 
     image_format = "jpeg" if ext == "jpg" else ext
     image_format = image_format.capitalize()
-
-    if encoded:
-        image_buffer = StringIO()
-        img.save(image_buffer, format=image_format)
-        return image_buffer.getvalue()
 
     output_file = os.path.join(save_dir, str(uuid.uuid4()) + "." + ext)
     img.save(output_file, format=image_format)
