@@ -53,7 +53,7 @@ setup(
     packages=find_packages(),
     include_package_data=True,
     version=_lu_meta['version'],
-    cmdclass={'install': MyInstall},
+    #cmdclass={'install': MyInstall},
     install_requires=[
         'opencv-python',
         'Pillow'
