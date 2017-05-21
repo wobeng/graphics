@@ -55,7 +55,7 @@ setup(
     version=_lu_meta['version'],
     #cmdclass={'install': MyInstall},
     install_requires=[
-        'opencv-python',
+        'numpy',
         'Pillow'
     ]
 )
