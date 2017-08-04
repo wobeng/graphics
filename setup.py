@@ -4,7 +4,7 @@ from subprocess import call
 
 import os
 import re
-from setuptools import setup, find_packages
+from setuptools import setup
 from setuptools.command.install import install
 
 
@@ -16,7 +16,7 @@ def package_meta():
     _url_re = re.compile(r'__url__\s+=\s+(.*)')
     _license_re = re.compile(r'__license__\s+=\s+(.*)')
 
-    with open('graphics_helper/__init__.py', 'rb') as ffinit:
+    with open('graphics_utils/__init__.py', 'rb') as ffinit:
         initcontent = ffinit.read()
         version = str(ast.literal_eval(_version_re.search(
             initcontent.decode('utf-8')).group(1)))
@@ -44,16 +44,15 @@ class MyInstall(install):
 
 
 setup(
-    name='graphics-helper',
-    description='graphics helper',
+    name='graphics-utils',
+    description='graphics utils',
     url=_lu_meta['url'],
     author='Welby Obeng',
     license=_lu_meta['license'],
-    keywords='graphics helper',
-    packages=find_packages(),
+    keywords='graphics utils',
     include_package_data=True,
     version=_lu_meta['version'],
-    #cmdclass={'install': MyInstall},
+    # cmdclass={'install': MyInstall},
     install_requires=[
         'numpy',
         'Pillow'
