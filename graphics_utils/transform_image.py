@@ -1,6 +1,6 @@
 import uuid
 
-from . import detect_face
+from graphics_utils import detect_face
 import os
 from PIL import Image
 

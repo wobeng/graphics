@@ -1,5 +1,5 @@
 import os
-from . import cv2
+from graphics_utils import cv2
 
 
 def detect_face(image_path):
