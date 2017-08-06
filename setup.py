@@ -3,7 +3,7 @@ from distutils.core import setup
 setup(
     name='graphics-utils',
     version='1.0.0',
-    packages=['', 'tests', 'graphics-utils', 'graphics-utils.cv2'],
+    packages=['', 'graphics_utils', 'graphics_utils.cv2'],
     url='https://github.com/wobeng/graphics-utils',
     license='',
     author='wobeng',

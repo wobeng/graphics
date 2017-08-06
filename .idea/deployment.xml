@@ -5,7 +5,7 @@
       <paths name="wobeng">
         <serverdata>
           <mappings>
-            <mapping deploy="/graphics-helper" local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/graphics-utils" local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>
