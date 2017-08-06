@@ -8,5 +8,9 @@ setup(
     license='',
     author='wobeng',
     author_email='wobeng@yblew.com',
-    description='detect face and transform image'
+    description='detect face and transform image',
+    install_requires=[
+        'numpy',
+        'Pillow'
+    ]
 )
