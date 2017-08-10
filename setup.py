@@ -1,9 +1,10 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 setup(
     name='graphics-utils',
     version='1.0.0',
-    packages=['graphics_utils', 'graphics_utils.cv2'],
+    packages=find_packages(exclude=['tests', 'tests.*']),
+    package_data={'': ['*']},
     url='https://github.com/wobeng/graphics-utils',
     license='',
     author='wobeng',
