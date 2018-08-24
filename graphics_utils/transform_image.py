@@ -1,36 +1,42 @@
+import os
 import uuid
 
-from graphics_utils import detect_face
-import os
 from PIL import Image
 
+from graphics_utils import detect_face
 
-def transform_image(file_name, width, height, ext, save_dir, face=True):
+
+def calculate_size(orig_width, orig_height, width, height):
+    if width == 0 and height != 0:
+        height_percent = (height / float(orig_height))
+        width = int((float(orig_width) * float(height_percent)))
+    elif width != 0 and height == 0:
+        width_percent = (width / float(orig_width))
+        height = int((float(orig_height) * float(width_percent)))
+    elif width == 0 and height == 0:
+        width = orig_width
+        height = orig_height
+    return width, height
+
+
+def transform_image(file_name, width, height, ext, save_dir, crop=True):
     img = Image.open(file_name)
 
-    if face:
-        face_box = detect_face.detect_face(file_name)
-        img = Image.open(file_name)
-        if face_box:
-            img2 = img.crop(face_box)
-            img = img2
+    if crop:
+        if crop is True:
+            face_box = detect_face.detect_face(file_name)
+            if face_box:
+                img = img.crop(face_box)
+        else:
+            img = img.crop(crop)
 
-    if width == 0 and height != 0:
-        hpercent = (height / float(img.size[1]))
-        width = int((float(img.size[0]) * float(hpercent)))
-    elif width != 0 and height == 0:
-        wpercent = (width / float(img.size[0]))
-        height = int((float(img.size[1]) * float(wpercent)))
-    elif width == 0 and height == 0:
-        width = img.size[0]
-        height = img.size[1]
+    size = calculate_size(img.size[0], img.size[1], width, height)
+    img = img.resize(size, Image.ANTIALIAS)
 
-    img = img.resize((width, height), Image.ANTIALIAS)
-
-    image_format = "jpeg" if ext == "jpg" else ext
+    image_format = 'jpeg' if ext == 'jpg' else ext
     image_format = image_format.capitalize()
 
-    output_file = os.path.join(save_dir, str(uuid.uuid4()) + "." + ext)
-    img.save(output_file, format=image_format)
+    output_file = os.path.join(save_dir, str(uuid.uuid4()) + '.' + ext)
+    img.save(output_file, optimize=True, format=image_format, quality=85)
 
     return output_file
