@@ -19,8 +19,8 @@ def calculate_size(orig_width, orig_height, width, height):
     return width, height
 
 
-def transform_image(file_name, width, height, ext, save_dir, crop=True):
-    img = Image.open(file_name)
+def transform_image(file_name, width, height, ext, save_dir, crop=True, img=None):
+    img = img or Image.open(file_name)
 
     if crop:
         if crop is True:
