@@ -37,6 +37,8 @@ def transform_image(file_name, width, height, ext, save_dir, crop=True, img=None
     image_format = image_format.capitalize()
 
     output_file = os.path.join(save_dir, str(uuid.uuid4()) + '.' + ext)
+    if img.mode != 'RGB':
+        img = img.convert('RGB')
     img.save(output_file, optimize=True, format=image_format, quality=85)
 
     return output_file
